@@ -1,0 +1,18 @@
+---
+- hosts: all-servers
+  user: pi
+  sudo: true
+  sudo_user: root
+  gather_facts: false
+  vars:
+    ansible_path: "{{ lookup('env','ANSIBLE_WORK_DIR') }}"
+  tasks:
+    - name: deploying colors
+      shell: nohup sudo /home/pi/piglow/{{ item }}
+      with_items:
+      - blue
+      - green
+      - orange
+      - red
+      - wheel
+      - yellow

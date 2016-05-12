@@ -1,0 +1,11 @@
+---
+#Working Example
+- hosts: all-servers
+  user: pi
+  sudo: true
+  sudo_user: root
+  vars:
+    ansible_path: "{{ lookup('env','ANSIBLE_WORK_DIR') }}"
+  roles:
+  - popo
+  - wheel

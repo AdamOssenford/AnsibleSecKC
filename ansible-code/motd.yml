@@ -1,0 +1,12 @@
+---
+- hosts: all-servers
+  user: pi
+  sudo: true
+  sudo_user: root
+  serial: 1
+  vars:
+    ansible_path: "{{ lookup('env','ANSIBLE_WORK_DIR') }}"
+    piglow_path: /home/pi/piglow
+  tasks:
+    - name: make motd file
+      template: src=templates/motd.j2 dest=/etc/motd backup=yes

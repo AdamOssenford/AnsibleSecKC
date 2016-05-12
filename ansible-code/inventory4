@@ -1,0 +1,17 @@
+[topleft]
+192.168.5.250 ansible_ssh_user=pi
+
+[topright]
+192.168.5.251 ansible_ssh_user=pi
+
+[bottomleft]
+192.168.5.252 ansible_ssh_user=pi
+
+[bottomright]
+192.168.5.253 ansible_ssh_user=pi
+
+[all-servers:children]
+topright
+bottomleft
+bottomright
+topleft

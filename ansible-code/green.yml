@@ -1,0 +1,11 @@
+---
+- hosts: all-servers
+  user: pi
+  sudo: true
+  sudo_user: root
+  gather_facts: false
+  vars:
+    ansible_path: "{{ lookup('env','ANSIBLE_WORK_DIR') }}"
+  tasks:
+    - name: going green
+      shell: nohup sudo /home/pi/piglow/green

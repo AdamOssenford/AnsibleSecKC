@@ -1,0 +1,11 @@
+---
+- hosts: all-servers
+  user: pi
+  sudo: true
+  sudo_user: root
+  serial: 1
+  vars:
+    ansible_path: "{{ lookup('env','ANSIBLE_WORK_DIR') }}"
+  tasks:
+    - name: off
+      shell: /home/pi/piglow/off

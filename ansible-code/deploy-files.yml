@@ -1,0 +1,16 @@
+---
+- hosts: all-servers
+  user: pi
+  sudo: true
+  sudo_user: root
+  serial: 1
+  vars:
+    ansible_path: "{{ lookup('env','ANSIBLE_WORK_DIR') }}"
+    piglow_path: /home/pi/piglow
+  tasks:
+    - name: create directory if needed
+      file: path={{ piglow_path }} state=directory mode=0755
+    - name: copy out piglow files
+      copy: src="{{ item }}" dest="{{ item }}" mode=0755
+      with_fileglob:
+        - "{{ piglow_path }}/*"
